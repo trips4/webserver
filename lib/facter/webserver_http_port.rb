@@ -19,11 +19,9 @@ Facter.add(:webserver_http_port) do
       require 'win32/registry'
       begin
         result = `%x[powershell.exe -Command "Import-Module WebAdministration; (Get-WebBinding -Protocol 'http').bindingInformation"]`
-        Facter.debug("Raw result from PowerShell: #{result.inspect}")
         match = result.match(/:(\d+):/)
         #port = match[1] if match
         port = '8001'
-        Facter.debug("Extracted port: #{port}")
       rescue
         port = 'rescued'
       end
