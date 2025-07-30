@@ -1,0 +1,14 @@
+fixtures:
+  forge_modules:
+    powershell:
+      repo: "puppetlabs/powershell"
+      ref: "5.2.1"
+  #   firewall:
+  #     repo: "puppetlabs/firewall"
+  #     ref: "2.x"
+  # repositories:
+  #   my_custom_module:
+  #     repo: "https://github.com/myorg/my_custom_module.git"
+  #     ref: "main"
+  # symlinks:
+  #   my_local_module: "#{source_dir}/../my_local_module"
