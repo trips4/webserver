@@ -19,7 +19,7 @@ Facter.add(:webserver_http_port) do
       require 'win32/registry'
       begin
         result = `%x[powershell.exe -Command "Import-Module WebAdministration; (Get-WebBinding -Protocol 'http').bindingInformation"]`
-        match = result.string.match(/:(\d+):/)
+        match = result.match(/:(\d+):/)
         port = match[1] if match
       rescue
         port = nil
