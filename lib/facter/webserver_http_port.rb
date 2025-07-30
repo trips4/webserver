@@ -25,7 +25,7 @@ Facter.add(:webserver_http_port) do
         port = '8001'
         Facter.debug("Extracted port: #{port}")
       rescue
-        port = nil
+        port = 'rescued'
       end
     end
 
