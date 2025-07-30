@@ -18,7 +18,7 @@ Facter.add(:webserver_http_port) do
     elsif Facter.value(:kernel) == 'windows'
       require 'win32/registry'
       begin
-        result = `%x[powershell.exe -Command "Import-Module WebAdministration; (Get-WebBinding -Protocol 'http').bindingInformation"]`
+        result = %x[powershell.exe -Command "Import-Module WebAdministration; (Get-WebBinding -Protocol 'http').bindingInformation"]
         #match = result.match(/:(\d+):/)
         #port = match[1] if match
         port = '8001'
