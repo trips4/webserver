@@ -3,9 +3,9 @@ fixtures:
     powershell:
       repo: "puppetlabs/powershell"
       ref: "5.2.1"
-  #   firewall:
-  #     repo: "puppetlabs/firewall"
-  #     ref: "2.x"
+    stdlib:
+      repo: "puppetlabs/stdlib"
+      ref: "9.7.0"
   # repositories:
   #   my_custom_module:
   #     repo: "https://github.com/myorg/my_custom_module.git"

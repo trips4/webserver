@@ -5,7 +5,7 @@
 #  The port on which the web server will listen
 #
 class webserver (
-  String $http_port = '80',
+  Pattern[/^\d+$/] $http_port = '80',
 ) {
   if $facts['os']['name'] == 'windows' {
     include webserver::windows::package
