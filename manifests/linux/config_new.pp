@@ -5,7 +5,7 @@
 # @example
 #   include webserver::linux::config_new
 class webserver::linux::config_new {
-  $http_port = 8080
+  $http_port = 9000
 
   # notify { "The REGEX IS ^Listen\\s+\\${http_port}$":
   # }
@@ -14,7 +14,8 @@ class webserver::linux::config_new {
     ensure  => present,
     line    => "Listen ${http_port}",
     path    => '/etc/apache2/ports.conf',
-    match   => "^Listen\\s+\\${http_port}$",
+    #match   => "^Listen\\s+\\${http_port}$",
+    match   => "^Listen\\s+",
     replace => true,
   }
 }
