@@ -5,11 +5,14 @@
 # @example
 #   include webserver::linux::config_new
 class webserver::linux::config_new {
+
+  $http_port = 8080
+
   file_line { '/etc/apache2/ports.conf':
     ensure  => present,
     line    => "Listen ${http_port}",
     path    => '/etc/apache2/ports.conf',
-    match   => '^Listen\s+\d+$',
+    match   => "^Listen\s+/${http_port}$",
     replace => false,
   }
 }
