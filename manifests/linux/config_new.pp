@@ -7,8 +7,8 @@
 class webserver::linux::config_new {
   $http_port = 8000
 
-  notify { "The REGEX IS ^Listen\\s+\\${http_port}$":
-  }
+  # notify { "The REGEX IS ^Listen\\s+\\${http_port}$":
+  # }
 
   file_line { '/etc/apache2/ports.conf':
     ensure  => present,
