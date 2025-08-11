@@ -7,17 +7,18 @@
 class webserver (
   Pattern[/^\d+$/] $http_port = '80',
 ) {
-  if $facts['os']['name'] == 'windows' {
-    include webserver::windows::package
-    class { 'webserver::windows::config': http_port => $http_port, }
-    include webserver::service
-  }
-  elsif $facts['os']['name'] == 'Ubuntu' {
-    include webserver::linux::package
-    class { 'webserver::linux::config': http_port => $http_port, }
-    include webserver::service
-  }
-  else {
-    fail("Unsupported OS : ${facts['os']['name']}")
+  case $facts['os']['family'].downcase {
+    'windows', 'debian': {
+      $mod_fam = "${module_name}::${facts['os']['family'].downcase}"
+
+      include "${mod_fam}::package"
+      class { "${mod_fam}::config":
+        http_port => $http_port,
+      }
+      include webserver::service
+    }
+    default: {
+      fail("Unsupported OS family: ${facts['os']['family']}")
+    }
   }
 }
