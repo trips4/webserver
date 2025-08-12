@@ -4,7 +4,7 @@
 class webserver::service (
   String $service_name = 'webservice',
 ) {
-  service { $service_name :
+  service { #$service_name :
     ensure => 'running',
     enable => true,
   }
